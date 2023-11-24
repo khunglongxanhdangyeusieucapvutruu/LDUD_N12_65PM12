@@ -65,7 +65,7 @@ while True:
         while True:
           exp = product.get_user_input("Nhap ngay het han (dd/MM/yyyy): ", parse_to=product.date, error_message="Ngay het han khong hop le, xin moi nhap lai.")
           if exp < mfg:
-            print("Error: Expired date must be greater than manufacturing date.")
+            print("Error: Ngay het han phai lon hon ngay san xuat.")
           else:
             break
 
