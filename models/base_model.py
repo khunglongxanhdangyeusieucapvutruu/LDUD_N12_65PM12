@@ -8,15 +8,15 @@ class Printable:
 class Importable:
   def __init__(self, price_in, nbr_products):
     if nbr_products is not None and (not isinstance(nbr_products, int) or nbr_products < 0 ):
-      raise ValueError("You must provide a number representing the number of products") 
+      raise ValueError("Ban phai cung cap so luong phu hop cho san pham") 
     if price_in is not None and (not isinstance(price_in, int) or price_in < 0 ):
-      raise ValueError("You must provide a number representing the number of products") 
+      raise ValueError("Ban phai cung cap so luong phu hop cho san pham") 
     self._price_in = price_in
     self._nbr_products = nbr_products
 
   def set_price_in(self, price_in):
     if price_in is not None and (not isinstance(price_in, int) or price_in < 0 ):
-          raise ValueError("You must provide a number representing the number of price in.") 
+          raise ValueError("Ban can cung cap gia tien nhap vao phu hop cho san pham .") 
     self._price_in = price_in
   def get_price_in(self) -> int:
     return self._price_in
@@ -25,30 +25,30 @@ class Importable:
   
   def set_nbr_products(self, number_of_products):
     if number_of_products is not None and (not isinstance(number_of_products, int) or number_of_products < 0 ):
-      raise ValueError("You must provide a number representing the number of products") 
+      raise ValueError("Ban phai cung cap so luong phu hop cho san pham") 
     self._nbr_products = number_of_products
 class Exportable:
   def __init__(self, price_out=None):
     if price_out is not None and (not isinstance(price_out, int) or price_out < 0 ):
-      raise ValueError("You must provide a number representing the number of price out.") 
+      raise ValueError("Ban can cung cap gia tien ban ra phu hop cho san pham.") 
     self._price_out = price_out
   def get_price_out(self) -> int:
     return self._price_out
   def set_price_out(self, price_out):
     if price_out is not None and (not isinstance(price_out, int) or price_out < 0 ):
-          raise ValueError("You must provide a number representing the number of price out.") 
+          raise ValueError("Ban can cung cap gia tien ban ra phu hop cho san pham.") 
     self._price_out = price_out
 
 class Expirable:
   def __init__(self, exp=None, mfg=None ) -> None:
     if exp is not None and not isinstance(exp, datetime.datetime):
-      raise ValueError("You must provide a datetime for EXP")
+      raise ValueError("Ban can cung cap ngay gio cho EXP")
     
     if mfg is not None and not isinstance(mfg, datetime.datetime):
-      raise ValueError("You must provide a datetime for MFG")
+      raise ValueError("Ban can cung cap ngay gio cho  MFG")
     
     if exp is not None and mfg is not None and  exp < mfg:
-      raise ValueError("MFG must be greater than or equal to EXP")
+      raise ValueError("MFG phai lon hon hoac bang EXP")
 
     self._exp = exp
     self._mfg = mfg
@@ -61,13 +61,13 @@ class Expirable:
   
   def set_exp(self, exp):
       if exp is not None and self._mfg is not None and  exp < self._mfg:
-        raise ValueError("EXP must be greater than or equal to MGF")
+        raise ValueError("EXP phai lon hon hoac bang MGF")
       
       self._exp = exp
 
   def set_mfg(self, mfg):
       if mfg is not None and self._exp is not None and  mfg > self._exp:
-        raise ValueError("MFG must be less than or equal to EXP")
+        raise ValueError("MFG phai nho hon hoac bang EXP")
       self._mfg = mfg
 
 class Indexable:
